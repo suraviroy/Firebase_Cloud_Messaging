@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 0px;
+            margin-right: 20px;
+        }
+
+        .patient-info {
+            margin-bottom: 30px;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #1a237e;
+        }
+
+        .section-content {
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a237e;
+            color: #fff;
+        }
+
+        .headers {
+            position: relative;
+            height: 110px;
+            z-index: 1;
+            margin-left: -20px;
+            margin-right: -20px;
+            overflow: hidden;
+        }
+
+        .headers::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #3293CA;
+            clip-path: polygon(100% 0, 100% 50%, 55% 51%, 50% 100%, 0 100%, 0 0);
+            z-index: -1;
+        }
+
+        .headers::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125px;
+            background-color: #FFC93D;
+            clip-path: polygon(100% 0, 100% 50%, 55% 51%, 50% 100%, 0 100%, 0 0);
+            z-index: -2;
+        }
+
+        .broder {
+            background-color: #FFC93D;
+            width: 428px;
+            height: 6px;
+            margin-left: -20px;
+
+        }
+
+        .blueline {
+            background-color: #3293CA;
+            height: 2px;
+            margin-left: -20px;
+            margin-right: -20px;
+            margin-top: 6px;
+            margin-bottom: 2px;
+        }
+
+        .my-image {
+            height: 90px;
+            width: 90px;
+            margin: 5px;
+        }
+
+        .docterdetails {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .doctername {
+            font-size: 31px;
+            color: white;
+            margin: 2px;
+            margin-top: 19px;
+            margin-left: 8px;
+
+        }
+
+        .docterdg {
+            color: white;
+            font-size: 20px;
+            margin-left: 8px;
+        }
+
+        .logo {
+            width: 105px;
+            margin-left: 300px;
+        }
+
+        .website {
+            font-size: 13px;
+            padding-left: 280px;
+            margin-top: -15px;
+            color: black;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .firstline {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .secondline {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .vertical-line {
+            position: fixed;
+            top: 0;
+            left: 40%;
+            height: 100%;
+            width: 2px;
+            background-color: black;
+        }
+
+        .medication {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .left_section {
+
+            border-right: 2px solid #3293CA;
+            width: 40%;
+            height: 500px;
+            margin-left: 10px;
+        }
+
+        .left_section p {
+            font-size: 12px;
+        }
+
+        .right_section p {
+            margin-left: 10px;
+            font-size: 12px;
+            margin-bottom: -10px;
+        }
+
+        .right_section {
+            width: 60%;
+            margin-left: 30px;
+        }
+
+        .headingsM {
+            display: flex;
+            justify-content: left;
+            margin-bottom: -10px;
+            margin-top: 10px;
+            margin-bottom: 25px;
+            margin-top: 20px;
+        }
+
+        .footerBluebar {
+            background-color: #3293CA;
+            height: 20px;
+            width: 840px;
+            margin-left: -20px;
+        }
+
+        .footer {
+            margin-bottom: -20px;
+            margin-top: 20px;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            display: flex;
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        .bar {
+            width: 50px;
+            margin-left: -10px;
+        }
+
+        .footer_first {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sign {
+            border-top: 2px dotted black;
+            width: 130px;
+            margin-left: 600px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .headingsML {
+            display: flex;
+            justify-content: center;
+            margin: 5px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <script>
+        var myImg = "https://pbs.twimg.com/profile_images/1192344396290617344/N2hHJzeS_400x400.png";
+        //var myImg = "";
+        var docterName = "Dr. Sai Kishore S N"
+        var docterdg = "MBBS, DTCD, FICM, FICD, FICC"
+        var complaint_txt = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,"
+        //var complaint_txt = ""; 
+        var finding_txt = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,"
+        //var finding_txt = ""; 
+        var suggestion_txt = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,"
+        //var suggestion_txt = ""; 
+        var medicine_name = "paracitamol"
+        //var medicine_name = ""
+        //var suggestion_txt = `{{ prescription.findings_suggestion.Findings }}`;
+        var lab_test = "Blood test"
+        //var lab_test = ""
+        
+
+    </script>
+    <div class="container">
+        <div class="headers">
+            <div class="docterdetails">
+                <div>
+                    <script>
+
+                        if (myImg) {
+                            document.write('<img class="my-image" src="' + myImg + '" alt="Image">');
+                        }
+                    </script>
+                </div>
+                <div>
+                    <div class="doctername">
+                        <script>document.write(docterName);</script>
+                    </div>
+                    <div class="docterdg">
+                        <script>document.write(docterdg);</script>
+                    </div>
+                </div>
+                <div class="logo-website-container">
+                    <img class="logo"
+                        src="https://res.cloudinary.com/dawra1qcb/image/upload/v1706353658/farm-animal-livestock-circle-badge-logo-free-vector_prev_ui_trspm1.png"
+                        alt="Image Description">
+                    <div class="website">www.nextgendoctors.in</div>
+                </div>
+            </div>
+        </div>
+        <div class="broder"></div>
+        <div class="blueline"></div>
+        <div class="patient-info">
+            <div class="firstline">
+                <!-- <p>Name: <span class="underline">{{ prescription.patient.name }}</span></p>
+                <p>Age: <span class="underline">{{ prescription.patient.age }}</span></p>
+                <p>Gender: <span class="underline">{{ prescription.patient.gender }}</span></p>
+                <p>Date: <span class="underline">{{ prescription.prescription_date|date:"F d, Y" }}</span></p> -->
+                <p>Name : <span class="underline">Suravi Roy</span></p>
+                <p>Age : <span class="underline">28</span></p>
+                <p>Gender : <span class="underline">Female</span></p>
+                <p>Date : <span class="underline">January 26, 2024</span></p>
+
+            </div>
+            <div class="secondline">
+
+                <p>Consultation ID : <span class="underline">123</span></p>
+                <p>Temp(F) : <span class="underline">32</span></p>
+                <p>Height(cm) : <span class="underline">150</span></p>
+                <p>Weight(kg) : <span class="underline">59</span></p>
+
+            </div>
+
+        </div>
+        <!-- <div class="vertical-line"></div> -->
+        <!-- <div class="section medication">
+            <div class="section-title">Medication</div>
+            <div class="section-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Medicine</th>
+                            <th>Description</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for medicine in prescription.medicines.all %}
+                        <tr>
+                            <td>{{ medicine.name }}</td>
+                            <td>{{ medicine.description }}</td>
+                            <td>{{ medicine.duration.duration }} {{ medicine.duration.unit }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section lab-tests">
+            <div class="section-title">Lab Tests</div>
+            <div class="section-content">
+                <ul>
+                    {% for lab_test in prescription.lab_tests.all %}
+                    <li>{{ lab_test.name }} - {{ lab_test.description }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="section findings-suggestions">
+            <div class="section-title">Findings and Suggestions</div>
+            <div class="section-content">
+                <p><strong>Findings:</strong> {{ prescription.findings_suggestion.Findings }}</p>
+                <p><strong>Suggestions:</strong> {{ prescription.findings_suggestion.Suggestions }}</p>
+            </div>
+        </div> -->
+
+        <div class="medication">
+            <div class="left_section">
+                <div>
+                    <!-- <div id="complaints-section">
+                        <div class="headingsM">COMPLAINTS</div>
+                        <p>
+                            <script>document.write(complaint_txt);</script>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("complaints-section")
+                        if (complaint_txt.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script> -->
+
+                    <div id="findings-section">
+                        <div class="headingsM">FINDINGS</div>
+                        <p>
+                            <script>document.write(finding_txt);</script>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("findings-section")
+                        if (finding_txt.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                    <div id="suggestion-section">
+                        <div class="headingsM">SUGGESTIONS</div>
+                        <p>
+                            <script>document.write(suggestion_txt);</script>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("suggestion-section")
+                        if (suggestion_txt.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="right_section">
+                <div>
+                    <div id="medicines-section">
+                        <div class="headingsM">MEDICINES</div>
+
+                        <p>
+                          <ol>  <li>{{ medicine.name }}
+                        <p>{{ medicine.description }}</p>
+                        <p>Instruction {{ medicine.duration.duration }} {{ medicine.duration.unit }}</p></li></ol>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("medicines-section")
+                        if (medicine_name.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                    <div id="labtest-section">
+                        <div class="headingsML">LAB TESTS</div>
+                        <p>
+
+                          <ol><li>  {{ lab_test.name }} - {{ lab_test.description }}</li></ol>
+
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("labtest-section")
+                        if (lab_test.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div class="sign">Signature</div>
+        <div class="footer">
+            <div class="footer_first">
+                <img class="bar" src="https://img.freepik.com/free-psd/barcode-illustration-isolated_23-2150584086.jpg"
+                    alt="Image Description">
+                <div class="disclaimer">Disclaimer: This prescription has been issued based on your information shared
+                    with the doctor during
+                    the online consultation. In case of any emergency, please visit a nearby hospital.
+                </div>
+            </div>
+            <div class="footerBluebar"></div>
+        </div>
+    </div>
+</body>
+
+</html>

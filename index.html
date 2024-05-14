@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #f5f5f5;
+            margin: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 0px;
+            margin-right: 20px;
+        }
+
+        .patient-info {
+            margin-bottom: 30px;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            color: #1a237e;
+        }
+
+        .section-content {
+            margin-top: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a237e;
+            color: #fff;
+        }
+
+        .headers {
+            position: relative;
+            height: 110px;
+            z-index: 1;
+            margin-left: -20px;
+            margin-right: -20px;
+            overflow: hidden;
+        }
+
+        .headers::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #3293CA;
+            clip-path: polygon(100% 0, 100% 50%, 55% 51%, 50% 100%, 0 100%, 0 0);
+            z-index: -1;
+        }
+
+        .headers::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 125px;
+            background-color: #FFC93D;
+            clip-path: polygon(100% 0, 100% 50%, 55% 51%, 50% 100%, 0 100%, 0 0);
+            z-index: -2;
+        }
+
+        .broder {
+            background-color: #FFC93D;
+            width: 428px;
+            height: 6px;
+            margin-left: -20px;
+
+        }
+
+        .blueline {
+            background-color: #3293CA;
+            height: 2px;
+            margin-left: -20px;
+            margin-right: -20px;
+            margin-top: 6px;
+            margin-bottom: 2px;
+        }
+
+        .my-image {
+            height: 80px;
+            width: 80px;
+            margin: 5px;
+        }
+
+        .docterdetails {
+            display: flex;
+            flex-direction: row;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        .doctername {
+            font-size: 31px;
+            color: white;
+            margin: 2px;
+            margin-top: 19px;
+            margin-left: 8px;
+
+        }
+
+        .docterdg {
+            color: white;
+            font-size: 20px;
+            margin-left: 8px;
+        }
+
+        .logo {
+            width: 105px;
+            margin-left: 300px;
+
+        }
+
+        .website {
+            font-size: 13px;
+            padding-left: 280px;
+            margin-top: -15px;
+            color: black;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .firstline {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .secondline {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .vertical-line {
+            position: fixed;
+            top: 0;
+            left: 40%;
+            height: 100%;
+            width: 2px;
+            background-color: black;
+        }
+
+        .medication {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
+        .left_section {
+
+            border-right: 2px solid #3293CA;
+            width: 35%;
+            height: 520px;
+            margin-left: 10px;
+        }
+
+        .left_section p {
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        .right_section p {
+            font-size: 14px;
+            margin-bottom: -10px;
+        }
+
+        .right_section {
+            width: 65%;
+            margin-left: 30px;
+        }
+
+        .headingsM {
+            display: flex;
+            justify-content: left;
+            margin-bottom: -10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .headingsMs {
+            display: flex;
+            justify-content: left;
+            margin-bottom: -10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .footerBluebar {
+            background-color: #3293CA;
+            height: 20px;
+            width: 840px;
+            margin-left: -20px;
+        }
+
+        .footer {
+            margin-bottom: -20px;
+            margin-top: 20px;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            display: flex;
+            margin-left: 10px;
+            text-align: center;
+        }
+
+        .bar {
+            width: 50px;
+            margin-left: -10px;
+        }
+
+        .footer_first {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sign {
+            border-top: 2px dotted black;
+            width: 130px;
+            margin-left: 600px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .labtest-size{
+            font-size: 14px !important;
+        }
+        .headingsML {
+            display: flex;
+            justify-content: left;
+            margin: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .logo-website-container {
+            margin-top: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var myImg = "https://pbs.twimg.com/profile_images/1192344396290617344/N2hHJzeS_400x400.png";
+
+        // var finding_txt = `{{ prescription.findings_suggestion.Findings }}`
+        var finding_txt = "High fever, Cold and Cough High fever, Cold and Cough High fever, Cold and Cough"
+
+        // var suggestion_txt = `{{ prescription.findings_suggestion.Suggestions }}`
+        var suggestion_txt = "Review with reports Review with reports Review with reports"
+
+        var medicine_name = "paracitamol"
+
+        var lab_test = "Blood test"
+
+
+    </script>
+    <script>
+        const medicine = [
+            {
+                name: "Paracetamol",
+                type: "syrup",
+                description: "Used to relieve pain and reduce fever.",
+                duration: {
+                    duration: "3",
+                    unit: "days"
+                },
+                dose: "3",
+                instruction: "after food",
+                dosetime: "morning night"
+            },
+            {
+                name: "Amoxicillin",
+                type: "capsule",
+                description: "An antibiotic used to treat bacterial infections.",
+                duration: {
+                    duration: "7",
+                    unit: "days"
+                },
+                dose: "2",
+                dosetime: "morning night",
+                instruction: "before food"
+            },
+            {
+                name: "Ibuprofen",
+                type: "tablet",
+                description: "Used to reduce inflammation and treat pain.",
+                duration: {
+                    duration: "5",
+                    unit: "days"
+                },
+                dose: "1",
+                dosetime: "morning night",
+                instruction: "with water"
+            }
+        ];
+
+        const labTests = [
+            {
+                name: "Blood Test",
+                description: "This test measures various components in your blood."
+            },
+            {
+                name: "Urinalysis",
+                description: "This test analyzes your urine sample for various abnormalities."
+            },
+        ];
+    </script>
+
+    <div class="container">
+        <div class="headers">
+            <div class="docterdetails">
+                <div>
+                    <script>
+
+                        if (myImg) {
+                            document.write('<img class="my-image" src="' + myImg + '" alt="Image">');
+                        }
+                    </script>
+                </div>
+                <div>
+                    <div class="doctername">
+                        Dr. Sai Kishore S N
+                    </div>
+                    <div class="docterdg">
+                        MBBS, DTCD, FICM, FICD, FICC
+                    </div>
+                </div>
+                <div class="logo-website-container">
+                    <img class="logo"
+                        src="https://res.cloudinary.com/dawra1qcb/image/upload/v1706353658/farm-animal-livestock-circle-badge-logo-free-vector_prev_ui_trspm1.png"
+                        alt="Image Description">
+                    <div class="website">www.nextgendoctors.in</div>
+                </div>
+            </div>
+        </div>
+        <div class="broder"></div>
+        <div class="blueline"></div>
+        <div class="patient-info">
+            <div class="firstline">
+                <!-- <p>Name: <span class="underline">{{ prescription.patient.name }}</span></p>
+                <p>Age: <span class="underline">{{ prescription.patient.age }}</span></p>
+                <p>Gender: <span class="underline">{{ prescription.patient.gender }}</span></p>
+                <p>Date: <span class="underline">{{ prescription.prescription_date|date:"F d, Y" }}</span></p> -->
+                <p>Name : <span class="underline">Suravi Roy</span></p>
+                <p>Age : <span class="underline">28</span></p>
+                <p>Gender : <span class="underline">Female</span></p>
+                <p>Date : <span class="underline">January 26, 2024</span></p>
+
+            </div>
+            <div class="secondline">
+
+                <p>Consultation ID : <span class="underline">123</span></p>
+                <!-- <p>Temp(F) : <span class="underline">32</span></p>
+                <p>Height(cm) : <span class="underline">150</span></p>
+                <p>Weight(kg) : <span class="underline">59</span></p> -->
+
+            </div>
+
+        </div>
+
+        <div class="medication">
+            <div class="left_section">
+                <div>
+                    <div id="findings-section">
+                        <div class="headingsMs">FINDINGS</div>
+                        <p>
+                            <script>document.write(finding_txt);</script>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("findings-section")
+                        if (finding_txt.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                    <div id="suggestion-section">
+                        <div class="headingsMs">SUGGESTIONS</div>
+                        <p>
+                            <script>document.write(suggestion_txt);</script>
+                        </p>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("suggestion-section")
+                        if (suggestion_txt.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="right_section">
+                <div>
+                    <div id="medicines-section">
+                        <div class="headingsM">MEDICINES</div>
+                        <ol>
+                            <script>
+                                const medicationList = medicine.map(med => `
+                                <li>
+                                    <p><strong>${med.name}</strong></p>
+                                    <p>Take ${med.dose} ${med.type} for ${med.duration.duration} ${med.duration.unit} at ${med.dosetime}.</p>
+                                    <p>Instruction: ${med.instruction} </p>
+                                    <p>Description: ${med.description} </p>
+                                </li>
+                                <br />
+                            `).join('');
+                                document.write(medicationList);
+                            </script>
+                        </ol>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("medicines-section")
+                        if (medicine.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                    <div id="labtest-section">
+                        <div class="headingsML">LAB TESTS</div>
+                       <div class="labtest-size">
+                        <ol>
+                            <script>
+                                const labTestList = labTests.map(test => `
+                                  <li><strong>${test.name}</strong> - ${test.description}</li>
+                                  <br />
+                                  `).join('');
+                                document.write(labTestList);
+                            </script>
+                        </ol>
+                    </div>
+                    </div>
+                    <script>
+                        var complaintsSection = document.getElementById("labtest-section")
+                        if (lab_test.trim()) {
+                            complaintsSection.style.display = "block";
+                        } else {
+                            complaintsSection.parentNode.removeChild(complaintsSection);
+                        }
+                    </script>
+
+                </div>
+            </div>
+        </div>
+        <div class="sign">Signature</div>
+        <div class="footer">
+            <div class="footer_first">
+                <img class="bar" src="https://img.freepik.com/free-psd/barcode-illustration-isolated_23-2150584086.jpg"
+                    alt="Image Description">
+                <div class="disclaimer">Disclaimer: This prescription has been issued based on your information shared
+                    with the doctor during
+                    the online consultation. In case of any emergency, please visit a nearby hospital.
+                </div>
+            </div>
+            <div class="footerBluebar"></div>
+        </div>
+    </div>
+</body>
+
+</html>
